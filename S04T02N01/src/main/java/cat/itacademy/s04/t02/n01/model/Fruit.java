@@ -1,8 +1,14 @@
 package cat.itacademy.s04.t02.n01.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Fruit {
 
     @Id
@@ -11,31 +17,4 @@ public class Fruit {
 
     private String name;
     private int quantityKilos;
-
-    public Fruit() {}
-
-    public Fruit(String name, int quantityKilos) {
-        this.name = name;
-        this.quantityKilos = quantityKilos;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getQuantityKilos() {
-        return quantityKilos;
-    }
-
-    public void setQuantityKilos(int quantityKilos) {
-        this.quantityKilos = quantityKilos;
-    }
 }

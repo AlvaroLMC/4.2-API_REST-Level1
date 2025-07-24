@@ -24,6 +24,9 @@ public class FruitController {
     @PutMapping("/update")
     public ResponseEntity<Fruit> updateFruit(@RequestBody Fruit fruit) {
         Fruit updated = fruitService.updateFruit(fruit);
+        if (updated == null) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(updated);
     }
 
@@ -36,11 +39,15 @@ public class FruitController {
     @GetMapping("/getOne/{id}")
     public ResponseEntity<Fruit> getFruit(@PathVariable int id) {
         Fruit fruit = fruitService.getFruitById(id);
+        if (fruit == null) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(fruit);
     }
 
     @GetMapping("/getAll")
     public ResponseEntity<List<Fruit>> getAllFruits() {
-        return ResponseEntity.ok(fruitService.getAllFruits());
+        List<Fruit> fruits = fruitService.getAllFruits();
+        return ResponseEntity.ok(fruits);
     }
 }
